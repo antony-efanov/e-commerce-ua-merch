@@ -1,0 +1,28 @@
+@include sm {
+
+};
+
+@include md {
+  .user {
+    min-width: 0;
+    position: static;
+    transform: translateX(0);
+    padding-block: 0;
+    gap: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: none;
+
+    background-color: $colorMainWhite;
+    box-shadow: none;
+  }
+};
+
+@include lg {
+
+};
+
+@include xl {
+  
+};

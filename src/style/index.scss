@@ -1,0 +1,28 @@
+@import './essentials/import';
+@import './sections/header/import';
+@import './sections/cards/cards';
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: $colorBG;
+  height: 2000px;
+}
+
+.wrapper {
+  margin-block-start: 2rem;
+  margin-inline: auto;
+  max-width: 67.5rem;
+  border-radius: 2rem;
+
+  color: $colorMainDark;
+  background-color: $colorMainWhite;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.15);
+
+  .catalog-h1 {
+    margin-block-end: 1rem;
+    padding-inline: 2rem;
+  }
+}
