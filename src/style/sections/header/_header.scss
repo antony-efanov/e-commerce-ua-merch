@@ -32,6 +32,7 @@
     min-width: 100vw;
     position: fixed;
     padding-block: 1rem;
+    z-index: 2;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);

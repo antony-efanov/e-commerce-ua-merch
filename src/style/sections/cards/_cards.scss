@@ -1,18 +1,168 @@
 .cards {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-inline: 5px;
-  gap: 5px;
+  gap: 7px;
+  padding-block-end: .5rem;
+  color: $colorMainDark;
 
   .card {
-    padding: 0;
-    width: 50%;
-    // padding: 1rem;
+    padding: 0rem;
+    width: 49%;
     border: 1px solid $colorShadow;
-    border-radius: 2rem;
+    border-radius: 1.25rem;
+    position: relative;
 
-    &__img img {
-      border-radius: 2rem;
+    transition: box-shadow 200ms ease-in-out,
+                transform 200ms ease-in-out ;
+
+    &:hover {
+      box-shadow: 0 5px 5px 0px $colorShadow;
+      transform: translateY(-5px);
+    }
+
+    &__img {
+      border-radius: 1.25rem;
       padding: .25rem;
+    }
+
+    &__text {
+      padding: .5rem 1rem 1rem 1rem;
+    }
+
+    &__title {
+      font-size: 1.125rem;
+      padding-block-end: .75rem;
+    }
+
+    &__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__pricename {
+      opacity: .75;
+      font-size: .75rem;
+    }
+
+    &__price {
+      font-size: 1.5rem
+    }
+
+    &__btn {
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      background-color: $colorMainWhite;
+      padding: .75rem;
+      height: fit-content;
+      aspect-ratio: 1 / 1;
+      border: none;
+      border-radius: .75rem;
+
+      &--fav {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border-radius: .75rem;
+
+        transition: 250ms ease-in-out;
+
+        &:active {
+          svg {
+            transform: scale(1);
+          }
+        }
+
+        svg {
+          transform: scale(1.25);
+        }
+
+        &:hover {
+          svg path {
+            fill: url(#paint0_linear_60_1004);
+          }
+        }
+      }
+
+      &--add {
+        width: 40px;
+        height: 40px;
+        background-color: $colorMainWhite;
+        border: 1px solid $colorShadow;
+        position: relative;
+        transition: 200ms ease-in-out;
+
+        
+        &::before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+
+          width: 2px;
+          height: 15px;
+          border-radius: 2px;
+          background-color: $colorMainGrey;
+
+          transform: translate(-50%, -50%);
+          transition: 150ms ease-in-out;
+        }
+
+        &:active::before {
+          background-color: $colorMainWhite;
+          height: 12px;
+          transform: translate(55%, -50%) rotate(39deg);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+
+          width: 15px;
+          height: 2px;
+          border-radius: 2px;
+          background-color: $colorMainGrey;
+
+          transform: translate(-50%, -50%);
+          transition: 150ms ease-in-out;
+        }
+
+        &:active::after {
+          background-color: $colorMainWhite;
+          width: 8px;
+          transform: translate(-90%, 35%) rotate(45deg);
+        }
+
+        &:hover {
+          border: 1px solid hsl(120, 55%, 60%);
+        }
+
+        &:active {
+          box-shadow: none;
+          background: linear-gradient(360deg, rgba(50,170,43,1) 0%, rgba(83,236,85,1) 100%);
+        }
+      }
+    }
+  }
+
+  @include md {
+    gap: .5rem;
+    padding: .5rem;
+    .card {
+      width: 32%;
+    }
+  }
+  
+  @include lg {
+    padding: 1rem;
+    .card {
+      width: 24%;
     }
   }
 }
+

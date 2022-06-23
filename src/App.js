@@ -1,3 +1,5 @@
+import Card from './components/Card';
+
 function App() {
   return (
     <div className="wrapper">
@@ -39,23 +41,10 @@ function App() {
 
       <div className="cards">
 
-        <div className="card">
-          <div className="card__img">
-            <img src="/img/items/t-shirt__it.webp" alt="t-shirt__it"/>
-          </div>
-          <div className="card__title">
-            Футболка "А ти точно айтішнік?"
-          </div>
-          <div className="card__pricetag">
-            ЦІНА
-          </div>
-          <div className="price">259<span>₴</span></div>
-        </div>
-        <div className="card">
-          <div className="card__img">
-            <img src="/img/items/t-shirt__it.webp" alt="t-shirt__it"/>
-          </div>
-        </div>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
 
       </div>
 
