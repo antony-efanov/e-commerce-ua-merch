@@ -1,6 +1,8 @@
 @import './essentials/import';
-@import './sections/header/import';
-@import './sections/cards/cards';
+@import '../components/Header/style';
+@import '../components/Catalog/style';
+@import '../components/Card/style';
+
 
 html {
   font-family: 'Roboto', sans-serif;
@@ -21,23 +23,7 @@ body {
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.15);
 
   .content {
-    .catalog {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    
-    
-      margin-block-end: 1rem;
-      padding-inline: 2rem;
-    
-      @include md {
-        margin-block-end: .5rem;
-      }
-    
-      @include lg {
-        margin-block-end: 0;
-      }
-    }
+
   }
 }
 
