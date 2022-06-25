@@ -1,6 +1,5 @@
 .cards {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   margin-inline: 5px;
   gap: 7px;
@@ -8,7 +7,8 @@
   color: $colorMainDark;
 
   .card {
-    padding: 0rem;
+    display: flex;
+    flex-direction: column;
     width: 49%;
     border: 1px solid $colorShadow;
     border-radius: 1.25rem;
@@ -22,12 +22,31 @@
       transform: translateY(-5px);
     }
 
+    &__availability {
+      cursor: pointer;
+      font-size: .75rem;
+      font-weight: 500;
+
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      padding: .25rem .5rem;
+      border-radius: 1rem;
+
+      background-color: hsl(0, 0%, 100%);
+      color: rgb(30, 182, 30);
+    }
+
     &__img {
       border-radius: 1.25rem;
       padding: .25rem;
     }
 
     &__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
       padding: .5rem 1rem 1rem 1rem;
     }
 
@@ -68,16 +87,15 @@
         left: 10px;
         border-radius: .75rem;
 
-        transition: 250ms ease-in-out;
+        svg {
+          transform: scale(1.25);
+          transition: 150ms ease-in-out;
+        }
 
         &:active {
           svg {
             transform: scale(1);
           }
-        }
-
-        svg {
-          transform: scale(1.25);
         }
 
         &:hover {
@@ -93,7 +111,7 @@
         background-color: $colorMainWhite;
         border: 1px solid $colorShadow;
         position: relative;
-        transition: 200ms ease-in-out;
+        transition: 250ms ease-in-out;
 
         
         &::before {
@@ -144,7 +162,7 @@
 
         &:active {
           box-shadow: none;
-          background: linear-gradient(360deg, rgba(50,170,43,1) 0%, rgba(83,236,85,1) 100%);
+          background: linear-gradient(360deg, rgb(70, 202, 63) 0%, rgb(110, 241, 113) 100%);
         }
       }
     }
@@ -154,14 +172,14 @@
     gap: .5rem;
     padding: .5rem;
     .card {
-      width: 32%;
+      width: calc(33% - .25rem);
     }
   }
   
   @include lg {
     padding: 1rem;
     .card {
-      width: 24%;
+      width: calc(25% - .40rem);
     }
   }
 }

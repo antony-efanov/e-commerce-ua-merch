@@ -1,56 +1,120 @@
 import Card from './components/Card';
+import Header from './components/Header';
+import Catalog from './components/Catalog'
+
+const cardsArray = [
+  {
+    imgUrl: '/img/items/t-shirt__it.webp',
+    title:  'Футболка «А ти точно айтішнік?»',
+    price:  '259'
+  },
+  {
+    imgUrl: '/img/items/t-shirt__kherson.webp',
+    title:  'Футболка «Херсон»',
+    price:  '259'
+  },
+  {
+    imgUrl: '/img/items/hoodie__major.webp',
+    title:  'Худі «Майор Чорнобаєв»',
+    price:  '499'
+  },
+  {
+    imgUrl: '/img/items/hoodie__goose.webp',
+    title:  'Худі «Army Aviation Ukraine»',
+    price:  '459'
+  },
+  {
+    imgUrl: '/img/items/cup__major.webp',
+    title:  'Кружка «Майор чорнобаєв»',
+    price:  '119'
+  },
+  {
+    imgUrl: '/img/items/hoodie__ghost.webp',
+    title:  'Худі «Привид Києва»',
+    price:  '499'
+  },
+  {
+    imgUrl: '/img/items/hoodie__it.webp',
+    title:  'Худі «А ти точно айтішнік?»',
+    price:  '459'
+  },
+  {
+    imgUrl: '/img/items/shopper__odesa.webp',
+    title:  'Шопер «Одеса»',
+    price:  '159'
+  },
+  {
+    imgUrl: '/img/items/shopper__valkiria.webp',
+    title:  'Шопер «VALKIRIA»',
+    price:  '159'
+  },
+  {
+    imgUrl: '/img/items/shopper__zsu-cats.webp',
+    title:  'Шопер «ЗСУ — Котики»',
+    price:  '159'
+  },
+  {
+    imgUrl: '/img/items/t-shirt__fight.webp',
+    title:  'Футболка «Ukraine In The Fight»',
+    price:  '259'
+  },
+  {
+    imgUrl: '/img/items/t-shirt__goodbye.webp',
+    title:  'Футболка «Nice To See You»',
+    price:  '259'
+  },
+  {
+    imgUrl: '/img/items/t-shirt__major.webp',
+    title:  'Футболка «Майор чорнобаєв»',
+    price:  '259'
+  },
+  {
+    imgUrl: '/img/items/t-shirt__mordor.webp',
+    title:  'Футблка «Mordor Is Fall»',
+    price:  '259'
+  },
+  {
+    imgUrl: '/img/items/t-shirt__patron.webp',
+    title:  'Футболка «Патрон»',
+    price:  '259'
+  },
+  {
+    imgUrl: '/img/items/t-shirt__zsu-cats.webp',
+    title:  'Футболка «ЗСУ — Котики»',
+    price:  '259'
+  }
+]
 
 function App() {
   return (
-    <div className="wrapper">
-    
-    <header className="header">
 
-      <div className="brand">
-        <div className="brand__logo">
-          <a href="/">
-            <img 
-            width={65}
-            src="/img/logo.webp" 
-            alt="logo"/>
-          </a>
+    <div className="app">
+      <div className="wrapper">
+          
+          <Header />
+
+          <main className="content">
+
+            <Catalog />
+            
+            <div className="cards">
+
+              {
+                cardsArray.map((obj) => (
+                  <Card imgUrl={obj.imgUrl} title={obj.title} price={obj.price} />
+                ))
+              }
+
+            </div>
+
+          </main>
         </div>
-        <div className="brand-text">
-          <h2 className="brand__title">Сміливість</h2>
-          <p className="brand__subtitle">Магазин сувенірних речей</p>
-        </div>
-      </div>
 
-      <div className="user">
-        <div className="user__cart">
-          <img width={25} src="/img/icons/cart.svg" alt="cart"/>
-        </div>
-        <div className="user__fav">
-          <img width={25} src="/img/icons/heart.svg" alt="fav"/>
-        </div>
-        <div className="user__logo">
-          <img width={25} src="/img/icons/user.svg" alt="cart"/>
-        </div>
-      </div>
-
-    </header>
-
-    <main>
-
-      <h1 className="catalog-h1">Каталог товарів</h1>
-
-      <div className="cards">
-
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-
-      </div>
-
-    </main>
-
+        <footer className="footer">
+            
+        </footer>
     </div>
+    
   );
 }
 

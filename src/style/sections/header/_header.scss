@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin-block-end: 2rem;
+  margin-block-end: 2.5rem;
   padding: 2rem 2rem 0 2rem;
 
   &::after {
@@ -14,7 +14,7 @@
 
     background-color: rgb(238, 238, 238);
     width: 100%;
-    height: 2px;
+    height: 1px;
   }
 
   .brand {
@@ -26,6 +26,10 @@
       width: 4rem;
       height: 4rem;
     }
+
+    &__subtitle {
+      opacity: .5;
+    }
   }
 
   .user {
@@ -36,6 +40,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    // color: #4343da;
 
     display: flex;
     align-items: center;
@@ -43,6 +48,45 @@
 
     background-color: $colorMainWhite;
     box-shadow: 0 0 5px 2px $colorShadow;
+
+    &__btn {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+
+      &--cart {
+        svg path {
+          transition: 200ms ease-in-out;
+        }
+        &:hover {
+          svg path {
+            stroke: hsl(0, 0%, 30%);
+          }
+        }
+      }
+
+      &--fav {
+        svg path {
+          transition: 200ms ease-in-out;
+        }
+        &:hover {
+          svg path {
+            fill: hsl(0, 0%, 30%);
+          }
+        }
+      }
+
+      &--user {
+        svg path {
+          transition: 200ms ease-in-out;
+        }
+        &:hover {
+          svg path {
+            fill: hsl(0, 0%, 30%);
+          }
+        }
+      }
+    }
   }
   @include md {
     .user {
