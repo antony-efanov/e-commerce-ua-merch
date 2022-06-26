@@ -2,8 +2,10 @@ function Catalog() {
   return (
     <div className="catalog">
       <h1 className="catalog__title">Каталог товарів</h1>
-      <img className="catalog__search-icon" src="/img/icons/search.svg" alt="search"/>
-      <input className="catalog__search" type="text"/>
+      <div className="catalog__searchbox">
+        <img className="catalog__searchbox--icon" src="/img/icons/search.svg" alt="search"/>
+        <input placeholder="Пошук..." className="catalog__searchbox--field" type="text"/>
+      </div> 
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import Cart from './components/Cart'
 import Card from './components/Card';
 import Header from './components/Header';
 import Catalog from './components/Catalog'
@@ -89,6 +90,9 @@ function App() {
   return (
 
     <div className="app">
+
+      <Cart />
+      
       <div className="wrapper">
           
           <Header />
