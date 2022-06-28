@@ -1,4 +1,15 @@
+import { useState } from 'react'
+
 function Card(props) {
+
+  const [isChecked, setChecked] = useState(false);
+
+  const onClick = () => {
+
+    setChecked(isChecked => !isChecked);
+    console.log(isChecked);
+  }
+
   return (
     <div className="card">
       <p className="card__availability">в наявності</p>
@@ -25,8 +36,8 @@ function Card(props) {
             </div>
             <h4 className="card__price">{props.price}<span>₴</span></h4>
           </div>
-          <button className="card__btn card__btn--add">
-          </button>
+          <input type="checkbox" className='card__checkbox' id={props.number}/>
+          <label for={props.number} className="card__checkbox--btn"></label>
         </div>
       </div>
     </div>
