@@ -38,6 +38,7 @@
     }
 
     &__img {
+      user-select: none;
       border-radius: 1.25rem;
       padding: .25rem;
     }
@@ -141,22 +142,29 @@
       }
     }
 
-    &__btn {
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      background-color: $colorMainWhite;
-      padding: .75rem;
-      height: fit-content;
-      aspect-ratio: 1 / 1;
-      border: none;
-      border-radius: .75rem;
+    &__favbox {
+      display: none;
 
-      &--fav {
+      &:checked + label {
+        svg path {
+          fill: url(#paint0_linear_60_1004);
+        }
+      }
+
+      &--btn {
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        background-color: $colorMainWhite;
+        padding: .75rem;
+        height: fit-content;
+        aspect-ratio: 1 / 1;
+        border: none;
+        border-radius: .75rem;
+
         position: absolute;
         top: 10px;
         left: 10px;
-        border-radius: .75rem;
 
         svg {
           transform: scale(1.25);
