@@ -36,7 +36,7 @@
     min-width: 100vw;
     position: fixed;
     padding-block: 1rem;
-    z-index: 2;
+    z-index: 10;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -96,6 +96,7 @@
       transform: translateX(0);
       padding-block: 0;
       gap: 1.5rem;
+      z-index: 2;
   
       display: flex;
       align-items: center;

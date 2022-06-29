@@ -76,7 +76,7 @@
 
       &:checked + label {
         box-shadow: none;
-        background: linear-gradient(360deg, rgb(70, 202, 63) 0%, rgb(110, 241, 113) 100%);
+        background: $gradientGreen;
       }
   
       &:checked + label::before {

@@ -1,4 +1,6 @@
-import Cart from './components/Cart'
+import { useState } from 'react';
+import Cart from './components/Cart';
+import Favorite from './components/Favorite';
 import Card from './components/Card';
 import Header from './components/Header';
 import Catalog from './components/Catalog'
@@ -103,15 +105,21 @@ const cardsArray = [
 ]
 
 function App() {
+
+  const [cartOpened, setCartOpened] = useState(false);
+  const [favOpened, setFavOpened] = useState(false);
+
   return (
 
     <div className="app">
 
-      <Cart />
+      {cartOpened && <Cart onClose={() => {setCartOpened(false)}} />}
+      {favOpened && <Favorite onClose={() => {setFavOpened(false)}} />}
       
       <div className="wrapper">
           
-          <Header />
+          <Header onClickCart={() => {setCartOpened(!cartOpened)}}
+                  onClickFav={() => {setFavOpened(!favOpened)}} />
 
           <main className="content">
 
