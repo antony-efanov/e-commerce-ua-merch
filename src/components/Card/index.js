@@ -1,17 +1,16 @@
 import { useState } from 'react'
 
-function Card(props) {
+function Card({ imgUrl, title, price, number, onClickPlus }) {
 
   const [isChecked, setChecked] = useState(false);
 
   const onClick = () => {
-
+    onClickPlus({ imgUrl, title, price, number });
     setChecked(!isChecked);
-    console.log(isChecked);
   }
 
-  let favID = `${props.number}_fav`;
-  let checkID = `${props.number}_check`;
+  let favID = `${number}_fav`;
+  let checkID = `${number}_check`;
 
   return (
     <div className="card">
@@ -28,20 +27,20 @@ function Card(props) {
           </defs>
         </svg>
       </label>
-      <a href="#"><img className="card__img" src={props.imgUrl} alt="t-shirt__it"/></a>
+      <a href="#"><img className="card__img" src={imgUrl} alt="t-shirt__it"/></a>
       <div className="card__text">
         <h5 className="card__title">
-          <a href="#" >{props.title}</a>
+          <a href="#" >{title}</a>
         </h5>
         <div className="card__bottom">
           <div className="card__price-container">
             <div className="card__pricename">
               ЦІНА
             </div>
-            <h4 className="card__price">{props.price}<span>₴</span></h4>
+            <h4 className="card__price">{price}<span>₴</span></h4>
           </div>
           <input type="checkbox" className='card__checkbox' id={checkID}/>
-          <label for={checkID} className="card__checkbox--btn"></label>
+          <label onClick={onClick} for={checkID} className="card__checkbox--btn"></label>
         </div>
       </div>
     </div>

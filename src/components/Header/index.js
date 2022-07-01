@@ -12,7 +12,7 @@ function Header(props) {
           </a>
         </div>
         <div className="brand-text">
-          <h2 className="brand__title">Merch.ua</h2>
+          <h2 className="brand__title"><a href="/">Merch.ua</a></h2>
           <p className="brand__subtitle">Магазин сувенірних речей</p>
         </div>
       </div>
