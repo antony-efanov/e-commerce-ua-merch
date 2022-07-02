@@ -1,4 +1,7 @@
-function Cart({ onClose, cartItems = [] }) {
+import CartItem from './CartItem'
+
+function Cart({ onClose, onRemoveCartItem, cartItems = [] }) {
+
   return (
     <div className="cart">
       <div onClick={onClose} className="cart__overlay">
@@ -10,15 +13,16 @@ function Cart({ onClose, cartItems = [] }) {
             <button onClick={onClose} className="cart__header--close"></button>
           </div>
           {
-            cartItems.map(obj => (
-              <div className="cart__item">
-                <img className="cart__item--img" src={obj.imgUrl} alt="card_img"/>
-                <div className="cart__item--text">
-                  <p>{obj.title}</p>
-                  <h3>{obj.price}₴</h3>
-                </div>
-                <button className="cart__item--remove"></button>
-              </div>
+            cartItems.map((cartItem, index) => (
+              <CartItem 
+                key={index}
+                id={cartItem.id}
+                imgUrl={cartItem.imgUrl} 
+                title={cartItem.title} 
+                price={cartItem.price} 
+                number={cartItem.number}
+                onRemoveCartItem={onRemoveCartItem}
+              />
             ))
           }
         </div>
