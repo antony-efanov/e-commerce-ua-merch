@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Favorite from './pages/Favorite';
+
 import Header from './components/Header';
-import Catalog from './components/Catalog'
 import Cart from './components/Cart';
-import Card from './components/Card';
 import axios from 'axios';
 
 
@@ -67,7 +69,6 @@ function App() {
     }, 500);
   }
 
-
   return (
 
     <div className="app">
@@ -83,35 +84,24 @@ function App() {
           
           <Header onClickCart={onClickCart} />
 
-          <main className="content">
+          <Routes>
+            <Route path="/" element={
+            <Home
+              items={items}
+              searchValue={searchValue}
 
-            <Catalog searchValue={searchValue} setSearchInput={setSearchInput} />
-            
-            <div className="cards">
-
-              {
-                items                
-                .sort((a, b) => {
-                  return b.amount - a.amount;
-                })
-                .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-                .map((item, index) => (
-                  <Card 
-                  key={index}
-                  id={item.id}
-                  onAddToFav={item => {onAddToFav(item)}}
-                  onAddToCart={item => {onAddToCart(item)}} 
-                  imgUrl={item.imgUrl} 
-                  title={item.title} 
-                  price={item.price} 
-                  amount={item.amount}
-                  />
-                ))
-              }
-
-            </div>
-
-          </main>
+              setSearchInput={setSearchInput}
+              onAddToFav={onAddToFav}
+              onAddToCart={onAddToCart}
+              />
+            }/>
+            <Route path="/favorite" element={
+              <Favorite 
+              favItems={favItems}
+              />} />
+          </Routes>
+          
+          
         </div>
 
         <footer className="footer">

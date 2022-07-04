@@ -11,6 +11,12 @@ function Card({ id, imgUrl, title, price, amount, onAddToFav, onAddToCart }) {
     onAddToCart({imgUrl, title, price});
   }
 
+  const availabilityClass = () => {
+    return amount >= 15 ? "card__availability card__availability--available" : 
+    amount < 15 && amount != 0 ? "card__availability card__availability--ends" : 
+    amount == 0 ? "card__availability card__availability--unavailable" : null
+  }
+
   const availability = () => {
     if (amount >= 15) {
       return 'в наявності';
@@ -22,9 +28,7 @@ function Card({ id, imgUrl, title, price, amount, onAddToFav, onAddToCart }) {
   return (
     <div className="card">
       <p 
-      className={amount >= 15 ? "card__availability card__availability--available" : 
-                 amount < 15 && amount != 0 ? "card__availability card__availability--ends" : 
-                 amount == 0 ? "card__availability card__availability--unavailable" : null}>{availability()}</p>
+      className={availabilityClass()}>{availability()}</p>
       <input disabled type="checkbox" className='card__favbox' id={favID}/>
       <label onClick={onClickFav} htmlFor={favID} className="card__favbox--btn">
         <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
