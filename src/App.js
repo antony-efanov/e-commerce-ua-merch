@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import Cart from './components/Cart';
-import Favorite from './components/Favorite';
-import Card from './components/Card';
 import Header from './components/Header';
 import Catalog from './components/Catalog'
+import Cart from './components/Cart';
+import Card from './components/Card';
 import axios from 'axios';
 
 
@@ -18,29 +17,34 @@ function App() {
     .then(res => {
       setCartItems(res.data);
     })
+    axios.get('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems')
+    .then(res => {
+      setFavItems(res.data);
+    })
   }, []);
 
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [cartOpened, setCartOpened] = useState(false);
-  const [favOpened, setFavOpened] = useState(false);
+  const [favItems, setFavItems] = useState([]);
+  const [cartVisibility, setCartVisibility] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
-  const onClickCart = () => {
-    if (favOpened) {
-      setFavOpened(!favOpened);
-      setCartOpened(!cartOpened);
-    } else {
-      setCartOpened(!cartOpened);
-    }
+  const setSearchInput = event => {
+    setSearchValue(event.target.value);
   }
 
-  const onClickFav = () => {
-    if (cartOpened) {
-      setCartOpened(!cartOpened);
-      setFavOpened(!favOpened);
-    } else {
-      setFavOpened(!favOpened);
-    }
+  const onClickCart = () => {
+    setCartVisibility(!cartVisibility);
+  }
+
+  const onAddToFav = (item) => {
+    axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems', item);
+    setTimeout(() => {
+      axios.get('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems')
+      .then(res => {
+        setFavItems(res.data);
+      })
+    }, 500);
   }
 
   const onAddToCart = (item) => {
@@ -53,11 +57,8 @@ function App() {
     }, 500);
   }
 
-  const onRemoveCartItem = (n) => {
-    // setCartItems(cartItems.filter(cartItem => {
-    //   return cartItem.number !== n && cartItem;
-    // }))
-    axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${n}`)
+  const onRemoveCartItem = (id) => {
+    axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${id}`)
     setTimeout(() => {
       axios.get('https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems')
       .then(res => {
@@ -66,28 +67,21 @@ function App() {
     }, 500);
   }
 
-  const [searchValue, setSearchValue] = useState('');
-
-  const setSearchInput = event => {
-    setSearchValue(event.target.value);
-  }
 
   return (
 
     <div className="app">
 
-      {cartOpened && 
-      <Cart onRemoveCartItem={n => onRemoveCartItem(n)} 
+      {cartVisibility && 
+      <Cart 
       cartItems={cartItems} 
-      onClose={() => {setCartOpened(false)}} 
+      onClose={() => {setCartVisibility(!cartVisibility)}} 
+      onRemoveCartItem={id => onRemoveCartItem(id)} 
       />}
-
-      {favOpened && <Favorite onClose={() => {setFavOpened(false)}} />}
       
       <div className="wrapper">
           
-          <Header onClickCart={onClickCart}
-                  onClickFav={onClickFav} />
+          <Header onClickCart={onClickCart} />
 
           <main className="content">
 
@@ -96,16 +90,21 @@ function App() {
             <div className="cards">
 
               {
-                items
+                items                
+                .sort((a, b) => {
+                  return b.amount - a.amount;
+                })
                 .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
                 .map((item, index) => (
                   <Card 
                   key={index}
+                  id={item.id}
+                  onAddToFav={item => {onAddToFav(item)}}
                   onAddToCart={item => {onAddToCart(item)}} 
                   imgUrl={item.imgUrl} 
                   title={item.title} 
                   price={item.price} 
-                  number={item.number}
+                  amount={item.amount}
                   />
                 ))
               }

@@ -6,7 +6,7 @@ function CartItem({ imgUrl, title, price, number, id, onRemoveCartItem }) {
         <p>{title}</p>
         <h3>{price}₴</h3>
       </div>
-      <button onClick={n => onRemoveCartItem(id)} className="cart__item--remove"></button>
+      <button onClick={i => onRemoveCartItem(id)} className="cart__item--remove"></button>
     </div>
   );
 }

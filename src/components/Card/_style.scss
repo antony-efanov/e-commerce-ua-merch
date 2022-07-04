@@ -34,7 +34,18 @@
       border-radius: 1rem;
 
       background-color: hsl(0, 0%, 100%);
-      color: rgb(30, 182, 30);
+
+      &--available {
+        color: hsl(120, 72%, 42%);
+      }
+
+      &--ends {
+        color: hsl(12, 90%, 55%);
+      }
+
+      &--unavailable {
+        color: hsl(0, 0%, 50%);
+      }
     }
 
     &__img {
