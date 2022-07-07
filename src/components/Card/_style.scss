@@ -203,11 +203,17 @@
     .card {
       width: calc(33% - .25rem);
     }
+    .loader {
+      width: calc(33% - .25rem);
+    }
   }
   
   @include lg {
     padding: 1rem;
     .card {
+      width: calc(25% - .40rem);
+    }
+    .loader {
       width: calc(25% - .40rem);
     }
   }

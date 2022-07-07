@@ -18,12 +18,11 @@ function Cart({ onClose, onRemoveCartItem, cartItems = [] }) {
           {
             cartItems.map((cartItem, index) => (
               <CartItem 
-                key={index}
-                id={cartItem.id}
+                key={index} 
+                id={cartItem.id} 
                 imgUrl={cartItem.imgUrl} 
                 title={cartItem.title} 
                 price={cartItem.price} 
-                number={cartItem.number}
                 onRemoveCartItem={onRemoveCartItem}
               />
             ))

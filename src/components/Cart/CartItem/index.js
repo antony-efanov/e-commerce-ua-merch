@@ -1,4 +1,4 @@
-function CartItem({ imgUrl, title, price, number, id, onRemoveCartItem }) {
+function CartItem({ id, imgUrl, title, price, onRemoveCartItem }) {
   return (
     <div className="cart__item">
       <img className="cart__item--img" src={imgUrl} alt="card_img"/>
