@@ -2,7 +2,7 @@ import Card from '../components/Card';
 import Catalog from '../components/Catalog';
 
 
-function Home({ items, cartItems, searchValue, setSearchInput, onClickFav, onClickPlus, isLoading }) {
+function Home({ items, cartItems, favItems, searchValue, setSearchInput, onClickFav, onClickPlus, isLoading }) {
 
   const filtredItems = items
   .sort((a, b) => b.amount - a.amount)
@@ -17,6 +17,7 @@ function Home({ items, cartItems, searchValue, setSearchInput, onClickFav, onCli
         onClickFav={item => {onClickFav(item)}}
         onClickPlus={item => {onClickPlus(item)}} 
         inCart={cartItems.some(cartItem => cartItem.parentID === item.id)}
+        inFav={favItems.some(favItem => favItem.parentID === item.id)}
         loading={isLoading}
         />
       ));

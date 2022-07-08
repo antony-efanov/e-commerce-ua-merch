@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import AppContext from './context';
 import Home from './pages/Home';
 import Favorite from './pages/Favorite';
 
 import Header from './components/Header';
 import Cart from './components/Cart';
 import axios from 'axios';
+
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
         setCartItems(cartResult.data);
         setFavItems(favResult.data);
         setItems(itemsResult.data);
+        
 
       } catch (error) {
         alert(`Помилка завантаження даних з серверу: ${error}`)
@@ -41,22 +44,20 @@ function App() {
 
   const setSearchInput = event => {
     setSearchValue(event.target.value);
-  }
+  };
 
   const onClickCart = () => {
     setCartVisibility(!cartVisibility);
-  }
+  };
+
   const onClickPlus = async (item) => {
     try {
       const findItem = cartItems.find((cartItem) => Number(cartItem.parentID) === Number(item.id));
       if (findItem) {
-        console.log('знайшов')
         axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${Number(findItem.id)}`);
         setCartItems((prev) => prev.filter((cartItem) => Number(cartItem.parentID) !== Number(item.id)));
       } else {
-        console.log('нема, додаю')
         const { data } = await axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems', item);
-        console.log(data)
         setCartItems(prev => [...prev, data]);
       }
     } catch (error) {
@@ -65,16 +66,21 @@ function App() {
     }
   };
 
-  const onClickFav = (item) => {
-    axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems', item);
-    setTimeout(() => {
-      axios.get('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems')
-      .then(res => {
-        setFavItems(res.data);
-      })
-    }, 500);
-  }
-
+  const onClickFav = async (item) => {
+    try {
+      const findItem = favItems.find((favItem) => Number(favItem.parentID) === Number(item.id));
+      if (findItem) {
+        axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems/${Number(findItem.id)}`);
+        setFavItems((prev) => prev.filter((favItem) => Number(favItem.parentID) !== Number(item.id)));
+      } else {
+        const { data } = await axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems', item);
+        setFavItems(prev => [...prev, data]);
+      }
+    } catch (error) {
+      alert('Ошибка при добавлении в корзину');
+      console.error(error);
+    }
+  };
 
   const onRemoveCartItem = (id) => {
     console.log(id)
@@ -85,12 +91,10 @@ function App() {
         setCartItems(res.data);
       })
     }, 500);
-  }
+  };
 
   return (
-
-    <div className="app">
-
+    <AppContext.Provider value={{ favItems }}>
       {cartVisibility && 
       <Cart 
       cartItems={cartItems} 
@@ -99,14 +103,13 @@ function App() {
       />}
       
       <div className="wrapper">
-          
           <Header onClickCart={onClickCart} />
-
           <Routes>
             <Route path="/" element={
               <Home
                 items={items}
                 cartItems={cartItems}
+                favItems={favItems}
                 searchValue={searchValue}
                 
                 isLoading={isLoading}
@@ -115,18 +118,14 @@ function App() {
                 onClickPlus={onClickPlus}
               />
             }/>
-            <Route path="/favorite" element={
-              <Favorite 
-              favItems={favItems}
-              />} />
+            <Route path="/favorite" element={<Favorite favItems={favItems} />} />
           </Routes>
-          
         </div>
 
         <footer className="footer">
             
         </footer>
-    </div>
+    </AppContext.Provider>
   );
 }
 

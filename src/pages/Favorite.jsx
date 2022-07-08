@@ -1,6 +1,11 @@
+import { useContext } from 'react';
 import Card from '../components/Card'
+import AppContext from "../context";
 
 function Favorite({ favItems }) {
+
+  const state = useContext(AppContext);
+
   return (
     <main className="content">
       <div className="catalog">
@@ -19,6 +24,7 @@ function Favorite({ favItems }) {
             title={item.title} 
             price={item.price} 
             amount={item.amount}
+            inFav={true}
             />
           ))
         }
