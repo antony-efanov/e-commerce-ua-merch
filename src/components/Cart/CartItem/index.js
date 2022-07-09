@@ -1,4 +1,4 @@
-function CartItem({ id, imgUrl, title, price, onRemoveCartItem }) {
+function CartItem({ id, parentID, imgUrl, title, price, onRemoveCartItem }) {
   return (
     <div className="cart__item">
       <img className="cart__item--img" src={imgUrl} alt="card_img"/>
@@ -6,7 +6,7 @@ function CartItem({ id, imgUrl, title, price, onRemoveCartItem }) {
         <p>{title}</p>
         <h3>{price}₴</h3>
       </div>
-      <button onClick={i => onRemoveCartItem(id)} className="cart__item--remove"></button>
+      <button onClick={(i, pID) => onRemoveCartItem(id, parentID)} className="cart__item--remove"></button>
     </div>
   );
 }

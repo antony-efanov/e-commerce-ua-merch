@@ -16,8 +16,8 @@ function Home({ items, cartItems, favItems, searchValue, setSearchInput, onClick
         {...item}
         onClickFav={item => {onClickFav(item)}}
         onClickPlus={item => {onClickPlus(item)}} 
-        inCart={cartItems.some(cartItem => cartItem.parentID === item.id)}
-        inFav={favItems.some(favItem => favItem.parentID === item.id)}
+        inCart={cartItems.some((cartItem) => Number(cartItem.parentID) === Number(item.parentID))}
+        inFav={favItems.some((favItem) => Number(favItem.parentID) === Number(item.parentID))}
         loading={isLoading}
         />
       ));

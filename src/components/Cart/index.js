@@ -20,10 +20,11 @@ function Cart({ onClose, onRemoveCartItem, cartItems = [] }) {
               <CartItem 
                 key={index} 
                 id={cartItem.id} 
+                parentID={cartItem.parentID}
                 imgUrl={cartItem.imgUrl} 
                 title={cartItem.title} 
                 price={cartItem.price} 
-                onRemoveCartItem={onRemoveCartItem}
+                onRemoveCartItem={(id, parentID) => onRemoveCartItem(id, parentID)}
               />
             ))
           }

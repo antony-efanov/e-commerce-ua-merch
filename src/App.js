@@ -1,20 +1,22 @@
+// react
 import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import AppContext from './context';
+// side libs
+import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+// pages
 import Home from './pages/Home';
 import Favorite from './pages/Favorite';
-
+// components
 import Header from './components/Header';
 import Cart from './components/Cart';
-import axios from 'axios';
-
 
 
 function App() {
-
+  
   const [items, setItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [favItems, setFavItems] = useState([]);
+  const [favItems, setFavItems] = useState([])
   const [cartVisibility, setCartVisibility] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -68,10 +70,10 @@ function App() {
 
   const onClickFav = async (item) => {
     try {
-      const findItem = favItems.find((favItem) => Number(favItem.parentID) === Number(item.id));
+      const findItem = favItems.find((favItem) => Number(favItem.parentID) === Number(item.parentID));
       if (findItem) {
+        setFavItems((prev) => prev.filter((favItem) => Number(favItem.parentID) !== Number(item.parentID)));
         axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems/${Number(findItem.id)}`);
-        setFavItems((prev) => prev.filter((favItem) => Number(favItem.parentID) !== Number(item.id)));
       } else {
         const { data } = await axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems', item);
         setFavItems(prev => [...prev, data]);
@@ -82,24 +84,22 @@ function App() {
     }
   };
 
-  const onRemoveCartItem = (id) => {
-    console.log(id)
-    axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${id}`)
-    setTimeout(() => {
-      axios.get('https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems')
-      .then(res => {
-        setCartItems(res.data);
-      })
-    }, 500);
+  const onRemoveCartItem = async (id, parentID) => {
+    setCartItems(cartItems.filter(cartItem => cartItem.id !== id));
+    await axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${id}`);
+  };
+
+  const isItemAdded = (parentID) => {
+    return cartItems.some((cartItem) => Number(cartItem.parentId) === Number(parentID));
   };
 
   return (
-    <AppContext.Provider value={{ favItems }}>
+    <AppContext.Provider value={{ items, cartItems, favItems, isItemAdded, onClickFav, onClickPlus }}>
       {cartVisibility && 
       <Cart 
       cartItems={cartItems} 
       onClose={() => {setCartVisibility(!cartVisibility)}} 
-      onRemoveCartItem={id => onRemoveCartItem(id)} 
+      onRemoveCartItem={(id, parentID) => onRemoveCartItem(id, parentID)} 
       />}
       
       <div className="wrapper">
@@ -112,13 +112,14 @@ function App() {
                 favItems={favItems}
                 searchValue={searchValue}
                 
+                isItemAdded={isItemAdded}
                 isLoading={isLoading}
                 setSearchInput={setSearchInput}
                 onClickFav={onClickFav}
                 onClickPlus={onClickPlus}
               />
             }/>
-            <Route path="/favorite" element={<Favorite favItems={favItems} />} />
+            <Route path="/favorite" element={<Favorite />} />
           </Routes>
         </div>
 

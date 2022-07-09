@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import Card from '../components/Card'
 import AppContext from "../context";
 
-function Favorite({ favItems }) {
+function Favorite() {
 
-  const state = useContext(AppContext);
+  const { favItems, onClickFav, onClickPlus } = useContext(AppContext);
 
   return (
     <main className="content">
@@ -17,13 +17,9 @@ function Favorite({ favItems }) {
           .map((item, index) => (
             <Card 
             key={index}
-            id={item.id}
-            // onAddToFav={item => {onAddToFav(item)}}
-            // onAddToCart={item => {onAddToCart(item)}} 
-            imgUrl={item.imgUrl} 
-            title={item.title} 
-            price={item.price} 
-            amount={item.amount}
+            {...item}
+            onClickFav={item => {onClickFav(item)}}
+            onClickPlus={item => {onClickPlus(item)}} 
             inFav={true}
             />
           ))
