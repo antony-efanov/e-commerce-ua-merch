@@ -4,7 +4,7 @@ import AppContext from "../context";
 
 function Favorite() {
 
-  const { favItems, onClickFav, onClickPlus } = useContext(AppContext);
+  const { favItems } = useContext(AppContext);
 
   return (
     <main className="content">
@@ -13,15 +13,16 @@ function Favorite() {
       </div>      
       <div className="cards">
         { favItems.length === 0 ? 
-          <div>kekis </div> :
-          favItems
-          .map((item, index) => (
+
+          <div className='favEmpty'>
+            <img src="img/broken-heart.png" alt="broken heart" />
+            <p>Тут поки пусто :(</p>
+          </div> 
+          :
+          favItems.map((item, index) => (
             <Card 
             key={index}
             {...item}
-            onClickFav={item => {onClickFav(item)}}
-            onClickPlus={item => {onClickPlus(item)}} 
-            inFav={true}
             />
           ))
         }

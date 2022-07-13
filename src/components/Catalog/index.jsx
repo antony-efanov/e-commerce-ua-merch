@@ -1,4 +1,10 @@
-function Catalog({ searchValue, setSearchInput }) {
+import { useContext } from "react";
+import AppContext from "../../context";
+
+function Catalog() {
+
+  const { searchValue, setSearchInput } = useContext(AppContext)
+  
   return (
     <div className="catalog">
       <h1 className="catalog__title">{searchValue ? `Пошук по запиту "${searchValue}"` : 'Каталог товарів'}</h1>

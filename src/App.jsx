@@ -15,10 +15,15 @@ import Cart from './components/Cart';
 function App() {
   
   const [items, setItems] = useState([]);
+
   const [cartItems, setCartItems] = useState([]);
+
   const [favItems, setFavItems] = useState([])
+
   const [cartVisibility, setCartVisibility] = useState(false);
+
   const [searchValue, setSearchValue] = useState('');
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -34,7 +39,6 @@ function App() {
         setCartItems(cartResult.data);
         setFavItems(favResult.data);
         setItems(itemsResult.data);
-        
 
       } catch (error) {
         alert(`Помилка завантаження даних з серверу: ${error}`)
@@ -43,14 +47,6 @@ function App() {
     
     fetchData();
   }, []);
-
-  const setSearchInput = event => {
-    setSearchValue(event.target.value);
-  };
-
-  const onClickCart = () => {
-    setCartVisibility(!cartVisibility);
-  };
 
   const onClickPlus = async (item) => {
     try {
@@ -101,41 +97,50 @@ function App() {
     return cartItems.some((cartItem) => Number(cartItem.parentID) === Number(parentID));
   };
 
+  const isItemFavorited = (parentID) => {
+    return favItems.some((favItem) => Number(favItem.parentID) === Number(parentID));
+  };
+
+  const onClickCart = () => {
+    setCartVisibility(!cartVisibility);
+  };
+
   const onCloseCart = () => {
     setCartVisibility(!cartVisibility)
-  }
+  };
+
+  const setSearchInput = event => {
+    setSearchValue(event.target.value);
+  };
 
   return (
     <AppContext.Provider 
       value={{ 
-        favItems, 
-        isItemAdded, 
+        favItems,
+        cartItems,
+        searchValue,
+        setSearchInput,
+        setCartItems,
+        isItemAdded,
+        isItemFavorited, 
         onClickFav, 
         onClickPlus,
         onCloseCart,
         onRemoveCartItem }}>
-      {cartVisibility && 
-      <Cart 
-      cartItems={cartItems} 
-      />}
+          
+      {cartVisibility && <Cart/>}
 
       <div className="wrapper">
-          <Header onClickCart={onClickCart} />
+          <Header onClickCart={onClickCart}/>
           <Routes>
             <Route path="/" element={
               <Home
                 items={items}
-                cartItems={cartItems}
-                favItems={favItems}
                 searchValue={searchValue}
-
                 isLoading={isLoading}
-                setSearchInput={setSearchInput}
-                onClickFav={onClickFav}
-                onClickPlus={onClickPlus}
               />
             }/>
-            <Route path="/favorite" element={<Favorite />} />
+            <Route path="/favorite" element={<Favorite/>}/>
           </Routes>
         </div>
 

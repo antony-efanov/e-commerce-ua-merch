@@ -160,17 +160,20 @@
     }
   }
 
-  &__empty {
-    width: fit-content;
+  &__info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     gap: .5rem;
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
+    min-height: 100%;
+    padding-inline: 2.25rem;
+    padding-block-end: 4rem;
+
+    @include md {
+      padding-inline: 3.5rem;
+    }
 
     &--img {
       max-width: 100%;
@@ -178,7 +181,12 @@
 
     &--title {
       font-size: 1.75rem;
-      font-weight: 200;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    &--text {
+      color: hsl(0, 0%, 50%);
       text-align: center;
     }
 
@@ -190,15 +198,23 @@
       cursor: pointer;
       font-size: 1rem;
       padding: 1rem 2rem;
+      margin-block-start: 1rem;
       border: none;
       border-radius: .75rem;
       color: $colorMainWhite;
       background: $gradientGreen;
       width: 100%;
-      
 
+      img {
+        transition: 150ms ease-in-out;
+      }
+      
       &:hover {
         background: $gradientGreenHover;
+
+        img {
+          transform: translateX(-5px);
+        }
       }
 
       &:active {

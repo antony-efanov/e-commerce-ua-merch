@@ -6,6 +6,18 @@
   padding-block-end: .5rem;
   color: $colorMainDark;
 
+  .favEmpty {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .25rem;
+    min-height: 50vh;
+    width: 100%;
+    padding-block-end: 3rem;
+  }
+
   .card {
     display: flex;
     flex-direction: column;
@@ -14,8 +26,8 @@
     border-radius: 1.25rem;
     position: relative;
 
-    transition: box-shadow 200ms ease-in-out,
-                transform 200ms ease-in-out ;
+    transition: box-shadow 150ms ease-in-out,
+                transform 150ms ease-in-out ;
 
     &:hover {
       box-shadow: 0 5px 5px 0px $colorShadow;
@@ -96,7 +108,7 @@
       border-radius: .75rem;
 
       position: relative;
-      transition: 250ms ease-in-out;
+      transition: 150ms ease-in-out;
 
       &:hover {
         border: 1px solid hsl(120, 55%, 60%);
@@ -148,64 +160,44 @@
         width: 8px;
         transform: translate(-90%, 35%) rotate(45deg);
       }
-
-      // &:checked + label {
-      //   box-shadow: none;
-      //   background: $gradientGreen;
-      // }
-  
-      // &:checked + label::before {
-      //   background-color: $colorMainWhite;
-      //   height: 12px;
-      //   transform: translate(55%, -50%) rotate(39deg);
-      // }
-  
-      // &:checked + label::after {
-      //   background-color: $colorMainWhite;
-      //   width: 8px;
-      //   transform: translate(-90%, 35%) rotate(45deg);
-      // }
     }
 
-    &__favbox {
-      display: none;
+    &__favbtn {
 
-      &:checked + label {
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      background-color: $colorMainWhite;
+      padding: .75rem;
+      height: fit-content;
+      aspect-ratio: 1 / 1;
+      border: none;
+      border-radius: .75rem;
+
+      position: absolute;
+      top: 10px;
+      left: 10px;
+
+      svg {
+        transform: scale(1.25);
+        transition: 150ms ease-in-out;
+      }
+
+      &:active {
+        svg {
+          transform: scale(1);
+        }
+      }
+
+      &:hover {
         svg path {
           fill: url(#paint0_linear_60_1004);
         }
       }
 
-      &--btn {
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-        background-color: $colorMainWhite;
-        padding: .75rem;
-        height: fit-content;
-        aspect-ratio: 1 / 1;
-        border: none;
-        border-radius: .75rem;
-
-        position: absolute;
-        top: 10px;
-        left: 10px;
-
-        svg {
-          transform: scale(1.25);
-          transition: 150ms ease-in-out;
-        }
-
-        &:active {
-          svg {
-            transform: scale(1);
-          }
-        }
-
-        &:hover {
-          svg path {
-            fill: url(#paint0_linear_60_1004);
-          }
+      &--active {
+        svg path {
+          fill: url(#paint0_linear_60_1004);
         }
       }
     }
