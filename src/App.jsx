@@ -54,13 +54,21 @@ function App() {
 
   const onClickPlus = async (item) => {
     try {
-      const findItem = cartItems.find((cartItem) => Number(cartItem.parentID) === Number(item.id));
+      const findItem = cartItems.find((cartItem) => Number(cartItem.parentID) === Number(item.parentID));
       if (findItem) {
         axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${Number(findItem.id)}`);
-        setCartItems((prev) => prev.filter((cartItem) => Number(cartItem.parentID) !== Number(item.id)));
+        setCartItems((prev) => prev.filter((cartItem) => Number(cartItem.parentID) !== Number(item.parentID)));
       } else {
+        setCartItems(prev => [...prev, item])
         const { data } = await axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems', item);
-        setCartItems(prev => [...prev, data]);
+        
+        setCartItems((prev) => prev.map(cartItem => {
+          if (cartItem.parentID === item.parentID) {
+            cartItem.id = data.id;
+            return cartItem
+          }
+          return cartItem
+        }))
       }
     } catch (error) {
       alert('Ошибка при добавлении в корзину');
@@ -84,24 +92,33 @@ function App() {
     }
   };
 
-  const onRemoveCartItem = async (id, parentID) => {
+  const onRemoveCartItem = async (id) => {
     setCartItems(cartItems.filter(cartItem => cartItem.id !== id));
     await axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${id}`);
   };
 
   const isItemAdded = (parentID) => {
-    return cartItems.some((cartItem) => Number(cartItem.parentId) === Number(parentID));
+    return cartItems.some((cartItem) => Number(cartItem.parentID) === Number(parentID));
   };
 
+  const onCloseCart = () => {
+    setCartVisibility(!cartVisibility)
+  }
+
   return (
-    <AppContext.Provider value={{ items, cartItems, favItems, isItemAdded, onClickFav, onClickPlus }}>
+    <AppContext.Provider 
+      value={{ 
+        favItems, 
+        isItemAdded, 
+        onClickFav, 
+        onClickPlus,
+        onCloseCart,
+        onRemoveCartItem }}>
       {cartVisibility && 
       <Cart 
       cartItems={cartItems} 
-      onClose={() => {setCartVisibility(!cartVisibility)}} 
-      onRemoveCartItem={(id, parentID) => onRemoveCartItem(id, parentID)} 
       />}
-      
+
       <div className="wrapper">
           <Header onClickCart={onClickCart} />
           <Routes>
@@ -111,8 +128,7 @@ function App() {
                 cartItems={cartItems}
                 favItems={favItems}
                 searchValue={searchValue}
-                
-                isItemAdded={isItemAdded}
+
                 isLoading={isLoading}
                 setSearchInput={setSearchInput}
                 onClickFav={onClickFav}

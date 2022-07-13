@@ -12,7 +12,8 @@ function Favorite() {
         <h1 className="catalog__title">Улюблене</h1>
       </div>      
       <div className="cards">
-        {
+        { favItems.length === 0 ? 
+          <div>kekis </div> :
           favItems
           .map((item, index) => (
             <Card 
