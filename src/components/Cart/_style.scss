@@ -34,7 +34,7 @@
   &__items {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: .5rem;
     overflow: auto;
     margin-bottom: auto;
   }
@@ -42,6 +42,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    margin-block-end: .75rem;
 
     &--title {
       font-size: 2rem;
@@ -98,30 +99,28 @@
 
   &__item {
     display: flex;
+    justify-content: flex-start;
     padding: .25rem;
     gap: .25rem;
     border: 1px solid $colorShadow;
-    border-radius: .5rem;
+    border-radius: 1rem;
     flex-grow: 1;
 
     &--img {
-      max-width: 30%;
+      max-width: 25%;
       aspect-ratio: 1 / 1;
-      border-radius: .25rem;
+      border-radius: .75rem;
     }
 
     &--remove {
 
       cursor: pointer;
-      display: grid;
-      place-items: center;
       background-color: $colorMainWhite;
 
-      width: 40px;
-      height: 40px;
-      padding: .75rem;
+      padding: 1rem;
       border: 1px solid $colorShadow;
       border-radius: .75rem;
+      margin-left: auto;
 
       position: relative;
       transition: 250ms ease-in-out;
@@ -226,6 +225,7 @@
   &__pay {
     margin-bottom: auto;
     margin-block-end: 4rem;
+    font-size: 1.5rem;
 
     @include md {
       margin-block-end: 1rem;

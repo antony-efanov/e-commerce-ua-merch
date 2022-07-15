@@ -14,7 +14,7 @@ function CartPay({ onClickOrder }) {
   return (
     <div className="cart__pay">
       <div className="cart__pay--sum">
-        <p>Загалом</p><p>{priceSum()}₴</p>
+        <p>Загалом</p><strong>{priceSum()}₴</strong>
       </div>
       <button onClick={onClickOrder} className="cart__pay--btn">Придбати</button>
     </div>

@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 // pages
 import Home from './pages/Home';
 import Favorite from './pages/Favorite';
+import { Orders } from './pages/Orders';
 // components
 import Header from './components/Header';
 import Cart from './components/Cart';
@@ -64,7 +65,7 @@ function App() {
             return cartItem
           }
           return cartItem
-        }))
+        }));
       }
     } catch (error) {
       alert('Ошибка при добавлении в корзину');
@@ -79,8 +80,16 @@ function App() {
         setFavItems((prev) => prev.filter((favItem) => Number(favItem.parentID) !== Number(item.parentID)));
         axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems/${Number(findItem.id)}`);
       } else {
+        setFavItems(prev => [...prev, item])
         const { data } = await axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/favItems', item);
-        setFavItems(prev => [...prev, data]);
+        
+        setFavItems((prev) => prev.map(favItem => {
+          if (favItem.parentID === item.parentID) {
+            favItem.id = data.id;
+            return favItem
+          }
+          return favItem
+        }));
       }
     } catch (error) {
       alert('Ошибка при добавлении в корзину');
@@ -119,28 +128,31 @@ function App() {
         favItems,
         cartItems,
         searchValue,
+        cartVisibility,
+        setCartVisibility,
         setSearchInput,
         setCartItems,
         isItemAdded,
         isItemFavorited, 
         onClickFav, 
-        onClickPlus,
         onCloseCart,
         onRemoveCartItem }}>
           
-      {cartVisibility && <Cart/>}
+      {cartVisibility && <Cart />}
 
       <div className="wrapper">
-          <Header onClickCart={onClickCart}/>
+          <Header onClickCart={onClickCart} />
           <Routes>
             <Route path="/" element={
               <Home
                 items={items}
                 searchValue={searchValue}
                 isLoading={isLoading}
+                onClickPlus={onClickPlus}
               />
             }/>
-            <Route path="/favorite" element={<Favorite/>}/>
+            <Route path="/favorite" element={<Favorite onClickPlus={onClickPlus} />} />
+            <Route path="/orders" element={<Orders/>} />
           </Routes>
         </div>
 

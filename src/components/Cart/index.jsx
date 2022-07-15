@@ -13,11 +13,22 @@ function Cart() {
   const { cartItems = [], setCartItems, onCloseCart } = useContext(AppContext)
 
   const [orderStatus, setOrderStatus] = useState(false)
+  const [orderID, setOrderID] = useState(null)
 
-  const onClickOrder = () => {
-    setOrderStatus(true)
-    // axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/orders', cartItems)
-    setCartItems([])
+  const onClickOrder = async () => {
+    try {
+      setOrderStatus(true)
+      const { data } = await axios.post('https://62bd6719c5ad14c110bdcc61.mockapi.io/orders', {
+        items: cartItems
+      });
+      cartItems.forEach(cartItem => {
+        axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${cartItem.id}`)
+      });
+      setCartItems([])
+      setOrderID(data.id);
+    } catch (error) {
+      alert(`Помилка оформлення замовлення ${error}`)
+    }
   }
 
   return (
@@ -40,9 +51,9 @@ function Cart() {
         
         {cartItems.length > 0 ? <CartPay onClickOrder={onClickOrder} /> : 
         <CartInfo
-        imgSrc="/img/box.png"
-        title="Порожньо"
-        text="Будь-даска, додайте хоча б один товар в корзину"
+        imgSrc={orderStatus ? "/img/check-list.png" : "/img/box.png"}
+        title={orderStatus ? "Дякуємо!" : "Порожньо"}
+        text={orderStatus ? `Ваше замовлення №${orderID} успішно створене` : "Будь-даска, додайте хоча б один товар в корзину"}
         onCloseCart={onCloseCart}
         />}
 

@@ -63,6 +63,11 @@
             stroke: hsl(0, 0%, 30%);
           }
         }
+        &__active {
+          svg path {
+            stroke: hsl(0, 0%, 30%);
+          }
+        }
       }
 
       &--fav {
@@ -74,6 +79,11 @@
             fill: hsl(0, 0%, 30%);
           }
         }
+        &__active {
+          svg path {
+            fill: hsl(0, 0%, 30%);
+          }
+        }
       }
 
       &--user {
@@ -81,6 +91,11 @@
           transition: 200ms ease-in-out;
         }
         &:hover {
+          svg path {
+            fill: hsl(0, 0%, 30%);
+          }
+        }
+        &__active {
           svg path {
             fill: hsl(0, 0%, 30%);
           }

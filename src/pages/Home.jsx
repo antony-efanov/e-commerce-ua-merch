@@ -2,7 +2,7 @@ import Card from '../components/Card';
 import Catalog from '../components/Catalog';
 
 
-function Home({ items, searchValue, isLoading }) {
+function Home({ items, searchValue, isLoading, onClickPlus }) {
 
   const filtredItems = items
   .sort((a, b) => b.amount - a.amount)
@@ -14,6 +14,7 @@ function Home({ items, searchValue, isLoading }) {
         <Card 
         key={index} 
         {...item}
+        onClickPlus={onClickPlus}
         loading={isLoading}
         />
       ));

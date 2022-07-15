@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Card from '../components/Card'
 import AppContext from "../context";
 
-function Favorite() {
+function Favorite({ onClickPlus }) {
 
   const { favItems } = useContext(AppContext);
 
@@ -22,6 +22,7 @@ function Favorite() {
           favItems.map((item, index) => (
             <Card 
             key={index}
+            onClickPlus={onClickPlus}
             {...item}
             />
           ))
