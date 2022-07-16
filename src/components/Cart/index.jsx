@@ -8,7 +8,7 @@ import AppContext from '../../context';
 import { useState } from 'react';
 import axios from 'axios';
 
-function Cart() {
+function Cart({ opened }) {
 
   const { cartItems = [], setCartItems, onCloseCart } = useContext(AppContext)
 
@@ -32,9 +32,9 @@ function Cart() {
   }
 
   return (
-    <div className="cart">
-      <div onClick={onCloseCart} className="cart__overlay"></div>
-      <div className="cart__curtain">
+    <div className={opened ? "cart cart__visible" : "cart"}>
+      <div onClick={onCloseCart} className={opened ? "cart__overlay cart__overlay--visible" : "cart__overlay"}></div>
+      <div className={opened ? "cart__curtain cart__curtain--opened" : "cart__curtain"}>
 
         <CartHeader />
         

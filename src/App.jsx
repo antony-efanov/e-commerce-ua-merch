@@ -138,7 +138,7 @@ function App() {
         onCloseCart,
         onRemoveCartItem }}>
           
-      {cartVisibility && <Cart />}
+      <Cart opened={cartVisibility} />
 
       <div className="wrapper">
           <Header onClickCart={onClickCart} />

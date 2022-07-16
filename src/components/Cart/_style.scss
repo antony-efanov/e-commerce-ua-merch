@@ -1,5 +1,10 @@
 .cart {
   display: flex;
+  transition: 250ms ease-in-out;
+
+  &__visible {
+    visibility: visible;
+  }
 
   &__overlay {
     background-color: hsla(0, 0%, 0%, 0.5);
@@ -7,15 +12,24 @@
     width: 100vw;
     max-width: 100%;
     height: 100vh;
-    z-index: 10;
+    z-index: 8;
     top: 0;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 150ms ease-in-out, visibility 150ms ease-in-out;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &__curtain {
     color: $colorMainDark;
     background-color: $colorMainWhite;
-    z-index: 10;
     position: fixed;
+    z-index: 9;
     right: 0;
     width: 70vw;
     max-width: 22rem;
@@ -24,6 +38,13 @@
     padding: .75rem;
     display: flex;
     flex-direction: column;
+
+    transition: 150ms ease-in-out;
+    transform: translateX(100%);
+
+    &--opened {
+      transform: translateX(0%);
+    }
 
     @include md {
       padding: 1.5rem;

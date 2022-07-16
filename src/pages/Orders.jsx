@@ -27,7 +27,7 @@ export function Orders() {
         <h1 className="catalog__title">Мої замовлення</h1>
       </div>
       <div className="cards">
-        { orders ? 
+        { orders.length ? 
           (isLoading ? [...Array(10)] : orders)
           .map((item, index) => (
             <Card 
@@ -38,7 +38,7 @@ export function Orders() {
             />
           )) : 
           <div className='favEmpty'>
-            <img src="img/broken-heart.png" alt="broken heart" />
+            <img src="img/box.png" alt="broken heart" />
             <p>Тут поки пусто :(</p>
           </div>}
       </div>
