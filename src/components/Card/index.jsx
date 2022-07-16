@@ -72,11 +72,9 @@ function Card({
               </defs>
             </svg>
           </button>
-          <a href="#"><img className="card__img" src={imgUrl} alt="t-shirt__it"/></a>
+          <img className="card__img" src={imgUrl} alt="t-shirt__it"/>
           <div className="card__text">
-            <h5 className="card__title">
-              <a href="#" >{title}</a>
-            </h5>
+            <h5 className="card__title">{title}</h5>
             <div className="card__bottom">
               <div className="card__price-container">
                 <div className="card__pricename">

@@ -51,9 +51,9 @@ function Cart({ opened }) {
         
         {cartItems.length > 0 ? <CartPay onClickOrder={onClickOrder} /> : 
         <CartInfo
-        imgSrc={orderStatus ? "/img/check-list.png" : "/img/box.png"}
+        imgSrc={orderStatus ? "img/check-list.png" : "img/box.png"}
         title={orderStatus ? "Дякуємо!" : "Порожньо"}
-        text={orderStatus ? `Ваше замовлення №${orderID} успішно створене` : "Будь-даска, додайте хоча б один товар в корзину"}
+        text={orderStatus ? `Ваше замовлення №${orderID} успішно створене` : "Будь-даска, додайте хоча б один товар у кошик"}
         onCloseCart={onCloseCart}
         />}
 

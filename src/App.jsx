@@ -11,6 +11,7 @@ import { Orders } from './pages/Orders';
 // components
 import Header from './components/Header';
 import Cart from './components/Cart';
+import { Footer } from './components/Footer';
 
 
 function App() {
@@ -42,7 +43,8 @@ function App() {
         setItems(itemsResult.data);
 
       } catch (error) {
-        alert(`Помилка завантаження даних з серверу: ${error}`)
+        alert("Помилка завантаження даних з серверу")
+        console.log(error)
       }
     }
     
@@ -51,6 +53,7 @@ function App() {
 
   const onClickPlus = async (item) => {
     try {
+
       const findItem = cartItems.find((cartItem) => Number(cartItem.parentID) === Number(item.parentID));
       if (findItem) {
         axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${Number(findItem.id)}`);
@@ -67,13 +70,15 @@ function App() {
           return cartItem
         }));
       }
+
     } catch (error) {
-      alert('Ошибка при добавлении в корзину');
-      console.error(error);
+      alert("Помилка при додаванні у кошик");
+      console.log(error);
     }
   };
 
   const onClickFav = async (item) => {
+
     try {
       const findItem = favItems.find((favItem) => Number(favItem.parentID) === Number(item.parentID));
       if (findItem) {
@@ -91,15 +96,21 @@ function App() {
           return favItem
         }));
       }
+
     } catch (error) {
-      alert('Ошибка при добавлении в корзину');
-      console.error(error);
+      alert("Помилка при додаванні в улюблене");
+      console.log(error);
     }
   };
 
   const onRemoveCartItem = async (id) => {
-    setCartItems(cartItems.filter(cartItem => cartItem.id !== id));
-    await axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${id}`);
+    try {
+      setCartItems(cartItems.filter(cartItem => cartItem.id !== id));
+      await axios.delete(`https://62bd6719c5ad14c110bdcc61.mockapi.io/cartItems/${id}`);
+    } catch (error) {
+      alert("Помилка при видаленні з кошика");
+      console.log(error)
+    }
   };
 
   const isItemAdded = (parentID) => {
@@ -141,24 +152,23 @@ function App() {
       <Cart opened={cartVisibility} />
 
       <div className="wrapper">
-          <Header onClickCart={onClickCart} />
-          <Routes>
-            <Route path="/" element={
-              <Home
-                items={items}
-                searchValue={searchValue}
-                isLoading={isLoading}
-                onClickPlus={onClickPlus}
-              />
-            }/>
-            <Route path="/favorite" element={<Favorite onClickPlus={onClickPlus} />} />
-            <Route path="/orders" element={<Orders/>} />
-          </Routes>
-        </div>
+        <Header onClickCart={onClickCart} />
+        <Routes>
+          <Route path="" element={
+            <Home
+              items={items}
+              searchValue={searchValue}
+              isLoading={isLoading}
+              onClickPlus={onClickPlus}
+            />
+          }/>
+          <Route path="favorite" element={<Favorite onClickPlus={onClickPlus} />} />
+          <Route path="orders" element={<Orders/>} />
+        </Routes>
+      </div>
 
-        <footer className="footer">
-            
-        </footer>
+      <Footer />
+
     </AppContext.Provider>
   );
 }
