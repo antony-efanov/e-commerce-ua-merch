@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import { Card } from "../components/Card";
+import { EmptyPage } from "../components/EmptyPage";
 
 
 export function Orders() {
@@ -30,7 +31,7 @@ export function Orders() {
         <h1 className="catalog__title">Мої замовлення</h1>
       </div>
       <div className="cards">
-        { orders.length ? 
+        { orders.length > 0 ? 
           (isLoading ? [...Array(10)] : orders)
           .map((item, index) => (
             <Card 
@@ -40,10 +41,10 @@ export function Orders() {
             amount=""
             />
           )) : 
-          <div className='favEmpty'>
-            <img src="img/box.png" alt="broken heart" />
-            <p>Тут поки пусто :(</p>
-          </div>}
+          <EmptyPage 
+          text="Ви ще нічого не замовляли"
+          imgSrc="img/box.png"
+          />}
       </div>
     </main>
   );

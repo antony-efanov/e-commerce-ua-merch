@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { AppContext } from "../context";
 
 import { Card } from '../components/Card'
+import { EmptyPage } from '../components/EmptyPage';
 
 
 export function Favorite({ onClickPlus }) {
@@ -15,11 +16,9 @@ export function Favorite({ onClickPlus }) {
       </div>      
       <div className="cards">
         { favItems.length === 0 ? 
-
-          <div className='favEmpty'>
-            <img src="img/broken-heart.png" alt="broken heart" />
-            <p>Тут поки пусто :(</p>
-          </div> 
+          <EmptyPage 
+          text="В моєму серці порожньо..."
+          imgSrc="img/broken-heart.png"/>
           :
           favItems.map((item, index) => (
             <Card 

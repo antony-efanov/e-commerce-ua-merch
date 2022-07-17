@@ -6,18 +6,6 @@
   padding-block-end: .5rem;
   color: $colorMainDark;
 
-  .favEmpty {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: .25rem;
-    min-height: 50vh;
-    width: 100%;
-    padding-block-end: 3rem;
-  }
-
   .card {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,19 @@
+.emptyPage {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .25rem;
+  min-height: 50vh;
+  width: 100%;
+  padding-block-end: 3rem;
+
+  &__title {
+    font-size: 1.5rem;
+  }
+  
+  &__text {
+    color: grey;
+  }
+}
