@@ -154,7 +154,7 @@ function App() {
       <div className="wrapper">
         <Header onClickCart={onClickCart} />
         <Routes>
-          <Route path="" element={
+          <Route path="/e-commerce-ua-merch" element={
             <Home
               items={items}
               searchValue={searchValue}
@@ -162,8 +162,8 @@ function App() {
               onClickPlus={onClickPlus}
             />
           }/>
-          <Route path="favorite" element={<Favorite onClickPlus={onClickPlus} />} />
-          <Route path="orders" element={<Orders/>} />
+          <Route path="/e-commerce-ua-merch/favorite" element={<Favorite onClickPlus={onClickPlus} />} />
+          <Route path="/e-commerce-ua-merch/orders" element={<Orders/>} />
         </Routes>
       </div>
 
