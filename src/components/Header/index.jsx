@@ -1,10 +1,11 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../../context';
+
+import { useContext } from 'react';
+import { AppContext } from '../../context';
 import { useState } from 'react';
 
 
-function Header({ onClickCart }) {
+export function Header({ onClickCart }) {
 
   const { cartVisibility, setCartVisibility } = useContext(AppContext);
   const [favOpened, setFavOpened] = useState(false);
@@ -70,5 +71,3 @@ function Header({ onClickCart }) {
     </header>
   );
 }
-
-export default Header;

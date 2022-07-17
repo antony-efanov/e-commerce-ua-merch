@@ -1,20 +1,19 @@
-// react
-import { useState, useEffect } from 'react';
-import AppContext from './context';
-// side libs
 import axios from 'axios';
 import { Route, Routes } from 'react-router-dom';
-// pages
-import Home from './pages/Home';
-import Favorite from './pages/Favorite';
+
+import { useState, useEffect } from 'react';
+import { AppContext } from './context';
+
+import { Home } from './pages/Home';
+import { Favorite } from './pages/Favorite';
 import { Orders } from './pages/Orders';
-// components
-import Header from './components/Header';
-import Cart from './components/Cart';
+
+import { Header } from './components/Header';
+import { Cart } from './components/Cart';
 import { Footer } from './components/Footer';
 
 
-function App() {
+export function App() {
   
   const [items, setItems] = useState([]);
 
@@ -148,7 +147,7 @@ function App() {
         onClickFav, 
         onCloseCart,
         onRemoveCartItem }}>
-          
+
       <Cart opened={cartVisibility} />
 
       <div className="wrapper">
@@ -172,5 +171,3 @@ function App() {
     </AppContext.Provider>
   );
 }
-
-export default App;

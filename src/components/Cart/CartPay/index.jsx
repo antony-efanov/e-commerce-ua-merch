@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import AppContext from "../../../context";
+import { AppContext } from "../../../context";
 
 
-function CartPay({ onClickOrder }) {
+export function CartPay({ onClickOrder }) {
 
   const { cartItems } = useContext(AppContext)
 
@@ -20,5 +20,3 @@ function CartPay({ onClickOrder }) {
     </div>
   );
 }
-
-export default CartPay;

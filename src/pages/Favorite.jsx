@@ -1,8 +1,10 @@
 import { useContext } from 'react';
-import Card from '../components/Card'
-import AppContext from "../context";
+import { AppContext } from "../context";
 
-function Favorite({ onClickPlus }) {
+import { Card } from '../components/Card'
+
+
+export function Favorite({ onClickPlus }) {
 
   const { favItems } = useContext(AppContext);
 
@@ -31,5 +33,3 @@ function Favorite({ onClickPlus }) {
     </main>
   );
 }
-
-export default Favorite;

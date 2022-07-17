@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import AppContext from "../../../context";
+import { AppContext } from "../../../context";
 
 
-function CartHeader() {
+export function CartHeader() {
 
   const { onCloseCart } = useContext(AppContext)
 
@@ -13,5 +13,3 @@ function CartHeader() {
     </div>
   );
 }
-
-export default CartHeader;

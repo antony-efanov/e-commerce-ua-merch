@@ -1,9 +1,10 @@
 import ContentLoader from "react-content-loader";
-import AppContext from "../../context";
+
+import { AppContext } from "../../context";
 import { useContext } from "react";
 
 
-function Card({ 
+export function Card({ 
   id, 
   parentID, 
   imgUrl, 
@@ -97,5 +98,3 @@ function Card({
     </>
   );
 }
-
-export default Card;

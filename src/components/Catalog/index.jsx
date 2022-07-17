@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import AppContext from "../../context";
+import { AppContext } from "../../context";
 
-function Catalog() {
+
+export function Catalog() {
 
   const { searchValue, setSearchInput } = useContext(AppContext)
   
@@ -15,5 +16,3 @@ function Catalog() {
     </div>
   );
 }
-
-export default Catalog;

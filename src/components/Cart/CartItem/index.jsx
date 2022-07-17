@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import AppContext from "../../../context";
+import { AppContext } from "../../../context";
 
-function CartItem({ id, imgUrl, title, price}) {
+
+export function CartItem({ id, imgUrl, title, price}) {
 
   const { onRemoveCartItem } = useContext(AppContext)
   return (
@@ -15,5 +16,3 @@ function CartItem({ id, imgUrl, title, price}) {
     </div>
   );
 }
-
-export default CartItem;

@@ -1,4 +1,4 @@
-function CartInfo({ onCloseCart, imgSrc, title, text }) {
+export function CartInfo({ onCloseCart, imgSrc, title, text }) {
   return (
     <div className="cart__info">
       <img width={100} className="cart__info--img" src={imgSrc} alt="cartInfo"/>
@@ -8,5 +8,3 @@ function CartInfo({ onCloseCart, imgSrc, title, text }) {
     </div>
   );
 }
-
-export default CartInfo;

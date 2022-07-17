@@ -1,8 +1,8 @@
-import Card from '../components/Card';
-import Catalog from '../components/Catalog';
+import { Card } from '../components/Card';
+import { Catalog } from '../components/Catalog';
 
 
-function Home({ items, searchValue, isLoading, onClickPlus }) {
+export function Home({ items, searchValue, isLoading, onClickPlus }) {
 
   const filtredItems = items
   .sort((a, b) => b.amount - a.amount)
@@ -33,5 +33,3 @@ function Home({ items, searchValue, isLoading, onClickPlus }) {
     </main>
   );
 }
-
-export default Home;

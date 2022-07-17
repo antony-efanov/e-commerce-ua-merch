@@ -1,14 +1,16 @@
-import CartHeader from './CartHeader';
-import CartItem from './CartItem';
-import CartPay from './CartPay';
-import CartInfo from './CartInfo';
-
-import { useContext } from 'react';
-import AppContext from '../../context';
-import { useState } from 'react';
 import axios from 'axios';
 
-function Cart({ opened }) {
+import { useContext } from 'react';
+import { AppContext } from '../../context';
+import { useState } from 'react';
+
+import { CartHeader } from './CartHeader';
+import { CartItem } from './CartItem';
+import { CartInfo } from './CartInfo';
+import { CartPay } from './CartPay';
+
+
+export function Cart({ opened }) {
 
   const { cartItems = [], setCartItems, onCloseCart } = useContext(AppContext)
 
@@ -61,5 +63,3 @@ function Cart({ opened }) {
     </div>
   );
 }
-
-export default Cart;
