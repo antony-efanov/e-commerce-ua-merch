@@ -38,7 +38,7 @@ function Header({ onClickCart }) {
         <div className="brand__logo">
           <img 
           width={65}
-          src="img/logo.webp" 
+          src="/e-commerce-ua-merch/img/logo.webp" 
           alt="logo"/>
         </div>
         <div className="brand-text">
