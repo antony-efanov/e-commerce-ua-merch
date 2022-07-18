@@ -62,6 +62,7 @@ export function Card({
         <div className="card">
           {amount && <p className={availabilityClass()}>{availability()}</p>}
           <button
+            aria-label="Add/Remove item from Favorite"
             onClick={onFav}
             className={
               isItemFavorited(parentID)
@@ -95,7 +96,13 @@ export function Card({
               </defs>
             </svg>
           </button>
-          <img className="card__img" src={imgUrl} alt="t-shirt__it" />
+          <img
+            width="350"
+            height="350"
+            className="card__img"
+            src={imgUrl}
+            alt="t-shirt__it"
+          />
           <div className="card__text">
             <h5 className="card__title">{title}</h5>
             <div className="card__bottom">
@@ -108,6 +115,7 @@ export function Card({
               </div>
               {amount !== "0" && onClickPlus && (
                 <button
+                  aria-label="Add/Remove item from Cart"
                   className={
                     isItemAdded(parentID)
                       ? "card__checkbtn card__checkbtn--active"

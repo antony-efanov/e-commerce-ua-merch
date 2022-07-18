@@ -11,6 +11,7 @@ export function CartItem({ id, imgUrl, title, price }) {
         <h3>{price}₴</h3>
       </div>
       <button
+        aria-label="Remove item from Cart"
         onClick={(i) => onRemoveCartItem(id)}
         className="cart__item--remove"
       ></button>

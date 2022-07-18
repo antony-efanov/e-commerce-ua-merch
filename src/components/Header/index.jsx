@@ -45,6 +45,7 @@ export function Header({ onClickCart }) {
 
       <div className="user">
         <button
+          aria-label="Cart"
           onClick={onCart}
           className={
             cartVisibility
@@ -82,6 +83,7 @@ export function Header({ onClickCart }) {
           )}
         </button>
         <Link
+          aria-label="Favorite"
           to="/favorite"
           onClick={onFav}
           className={
@@ -103,6 +105,7 @@ export function Header({ onClickCart }) {
           )}
         </Link>
         <Link
+          aria-label="Orders"
           to="/orders"
           onClick={onOrders}
           className={
