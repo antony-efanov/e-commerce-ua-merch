@@ -188,7 +188,7 @@ export function App() {
         <Header onClickCart={onClickCart} />
         <Routes>
           <Route
-            path="/e-commerce-ua-merch"
+            path="/"
             element={
               <Home
                 items={items}
@@ -199,10 +199,10 @@ export function App() {
             }
           />
           <Route
-            path="/e-commerce-ua-merch/favorite"
+            path="/favorite"
             element={<Favorite onClickPlus={onClickPlus} />}
           />
-          <Route path="/e-commerce-ua-merch/orders" element={<Orders />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </div>
 

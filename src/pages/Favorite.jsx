@@ -15,8 +15,8 @@ export function Favorite({ onClickPlus }) {
       <div className="cards">
         {favItems.length === 0 ? (
           <EmptyPage
-            text="В моєму серці порожньо..."
-            imgSrc="img/broken-heart.png"
+            text="Ви ще нічого не вподобали"
+            imgSrc="/e-commerce-ua-merch/img/broken-heart.png"
           />
         ) : (
           favItems.map((item, index) => (

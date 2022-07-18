@@ -33,7 +33,7 @@ export function Header({ onClickCart }) {
 
   return (
     <header className="header">
-      <Link to="/e-commerce-ua-merch" onClick={onLogo} className="brand">
+      <Link to="/" onClick={onLogo} className="brand">
         <div className="brand__logo">
           <img width={65} src="/e-commerce-ua-merch/img/logo.webp" alt="logo" />
         </div>
@@ -82,7 +82,7 @@ export function Header({ onClickCart }) {
           )}
         </button>
         <Link
-          to="/e-commerce-ua-merch/favorite"
+          to="/favorite"
           onClick={onFav}
           className={
             favOpened
@@ -103,7 +103,7 @@ export function Header({ onClickCart }) {
           )}
         </Link>
         <Link
-          to="/e-commerce-ua-merch/orders"
+          to="/orders"
           onClick={onOrders}
           className={
             ordersOpened

@@ -36,7 +36,10 @@ export function Orders() {
             <Card key={index} loading={isLoading} {...item} amount="" />
           ))
         ) : (
-          <EmptyPage text="Ви ще нічого не замовляли" imgSrc="img/box.png" />
+          <EmptyPage
+            text="Ви ще нічого не замовляли"
+            imgSrc="/e-commerce-ua-merch/img/box.png"
+          />
         )}
       </div>
     </main>
