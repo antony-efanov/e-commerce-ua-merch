@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { AppContext } from "../../../context";
 
-
 export function CartHeader() {
-
-  const { onCloseCart } = useContext(AppContext)
+  const { onCloseCart } = useContext(AppContext);
 
   return (
     <div className="cart__header">

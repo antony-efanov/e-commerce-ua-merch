@@ -1,14 +1,13 @@
-@import './essentials/import';
-@import '../components/Cart/style';
-@import '../components/Header/style';
-@import '../components/Catalog/style';
-@import '../components/Card/style';
-@import '../components/Footer/style';
-@import '../components/EmptyPage/style';
-
+@import "./essentials/import";
+@import "../components/Cart/style";
+@import "../components/Header/style";
+@import "../components/Catalog/style";
+@import "../components/Card/style";
+@import "../components/Footer/style";
+@import "../components/EmptyPage/style";
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {

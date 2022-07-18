@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   margin-inline: 5px;
   gap: 7px;
-  padding-block-end: .5rem;
+  padding-block-end: 0.5rem;
   color: $colorMainDark;
 
   .card {
@@ -14,8 +14,7 @@
     border-radius: 1.25rem;
     position: relative;
 
-    transition: box-shadow 150ms ease-in-out,
-                transform 150ms ease-in-out ;
+    transition: box-shadow 150ms ease-in-out, transform 150ms ease-in-out;
 
     &:hover {
       box-shadow: 0 5px 5px 0px $colorShadow;
@@ -23,13 +22,13 @@
     }
 
     &__availability {
-      font-size: .75rem;
+      font-size: 0.75rem;
       font-weight: 500;
 
       position: absolute;
       right: 10px;
       top: 10px;
-      padding: .25rem .5rem;
+      padding: 0.25rem 0.5rem;
       border-radius: 1rem;
 
       background-color: hsl(0, 0%, 100%);
@@ -50,7 +49,7 @@
     &__img {
       user-select: none;
       border-radius: 1.25rem;
-      padding: .25rem;
+      padding: 0.25rem;
     }
 
     &__text {
@@ -58,12 +57,12 @@
       flex-direction: column;
       justify-content: space-between;
       flex: 1;
-      padding: .5rem 1rem 1rem 1rem;
+      padding: 0.5rem 1rem 1rem 1rem;
     }
 
     &__title {
       font-size: 1.125rem;
-      padding-block-end: .75rem;
+      padding-block-end: 0.75rem;
     }
 
     &__bottom {
@@ -73,16 +72,15 @@
     }
 
     &__pricename {
-      opacity: .75;
-      font-size: .75rem;
+      opacity: 0.75;
+      font-size: 0.75rem;
     }
 
     &__price {
-      font-size: 1.5rem
+      font-size: 1.5rem;
     }
 
     &__checkbtn {
-
       cursor: pointer;
       display: grid;
       place-items: center;
@@ -90,9 +88,9 @@
 
       width: 40px;
       height: 40px;
-      padding: .75rem;
+      padding: 0.75rem;
       border: 1px solid $colorShadow;
-      border-radius: .75rem;
+      border-radius: 0.75rem;
 
       position: relative;
       transition: 150ms ease-in-out;
@@ -102,7 +100,7 @@
       }
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         left: 50%;
         top: 50%;
@@ -117,7 +115,7 @@
       }
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         left: 50%;
         top: 50%;
@@ -135,13 +133,13 @@
         box-shadow: none;
         background: $gradientGreen;
       }
-  
+
       &--active::before {
         background-color: $colorMainWhite;
         height: 12px;
         transform: translate(55%, -50%) rotate(39deg);
       }
-  
+
       &--active::after {
         background-color: $colorMainWhite;
         width: 8px;
@@ -150,16 +148,15 @@
     }
 
     &__favbtn {
-
       display: grid;
       place-items: center;
       cursor: pointer;
       background-color: $colorMainWhite;
-      padding: .75rem;
+      padding: 0.75rem;
       height: fit-content;
       aspect-ratio: 1 / 1;
       border: none;
-      border-radius: .75rem;
+      border-radius: 0.75rem;
 
       position: absolute;
       top: 10px;
@@ -191,23 +188,23 @@
   }
 
   @include md {
-    gap: .5rem;
-    padding: .5rem;
+    gap: 0.5rem;
+    padding: 0.5rem;
     .card {
-      width: calc(33% - .25rem);
+      width: calc(33% - 0.25rem);
     }
     .loader {
-      width: calc(33% - .25rem);
+      width: calc(33% - 0.25rem);
     }
   }
-  
+
   @include lg {
     padding: 1rem;
     .card {
-      width: calc(25% - .40rem);
+      width: calc(25% - 0.4rem);
     }
     .loader {
-      width: calc(25% - .40rem);
+      width: calc(25% - 0.4rem);
     }
   }
 }

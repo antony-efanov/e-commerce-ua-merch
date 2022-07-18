@@ -6,7 +6,7 @@
   padding: 2rem 2rem 0 2rem;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -28,7 +28,7 @@
     }
 
     &__subtitle {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 
@@ -49,18 +49,16 @@
     background-color: $colorMainWhite;
     box-shadow: 0 0 5px 2px $colorShadow;
 
-
     &__btn {
       cursor: pointer;
       background-color: transparent;
       border: none;
 
       &--cart {
-
         position: relative;
 
         .cartCounter {
-          font-size: .5rem;
+          font-size: 0.5rem;
 
           display: flex;
           justify-content: center;
@@ -94,11 +92,10 @@
       }
 
       &--fav {
-
         position: relative;
 
         .favCounter {
-          font-size: .5rem;
+          font-size: 0.5rem;
 
           display: flex;
           justify-content: center;
@@ -114,9 +111,7 @@
           width: 15px;
           height: 15px;
           border-radius: 100vw;
-          
         }
-
 
         svg path {
           transition: 200ms ease-in-out;
@@ -133,23 +128,22 @@
           }
 
           .favCounter {
-            font-size: .5rem;
-  
+            font-size: 0.5rem;
+
             display: flex;
             justify-content: center;
             align-items: center;
             color: rgb(255, 255, 255);
             background-color: rgb(224, 150, 154);
-  
+
             position: absolute;
             right: -7px;
             top: -3px;
-  
+
             padding: 2px;
             width: 15px;
             height: 15px;
             border-radius: 100vw;
-            
           }
         }
       }
@@ -171,7 +165,7 @@
       }
     }
   }
-  
+
   @include md {
     .user {
       min-width: 0;
@@ -180,11 +174,11 @@
       padding-block: 0;
       gap: 1.5rem;
       z-index: 2;
-  
+
       display: flex;
       align-items: center;
       justify-content: none;
-  
+
       background-color: $colorMainWhite;
       box-shadow: none;
     }

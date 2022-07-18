@@ -23,6 +23,6 @@ $breakpoint_xl: 71rem;
 
 @mixin xl {
   @media (min-width: $breakpoint_xl) {
-    @content
+    @content;
   }
 }

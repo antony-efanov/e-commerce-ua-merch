@@ -4,6 +4,18 @@ $colorMainWhite: hsl(0, 0%, 100%);
 $colorShadow: hsla(0, 0%, 50%, 0.15);
 $colorMainGrey: hsl(0, 0%, 76%);
 
-$gradientGreen: linear-gradient(360deg, hsl(117, 57%, 50%) 0%, hsl(121, 82%, 69%) 100%);
-$gradientGreenHover: linear-gradient(360deg, hsl(117, 57%, 53%) 0%, hsl(121, 82%, 72%) 100%);
-$gradientGreenActive: linear-gradient(360deg, hsl(117, 57%, 55%) 0%, hsl(121, 82%, 75%) 100%);
+$gradientGreen: linear-gradient(
+  360deg,
+  hsl(117, 57%, 50%) 0%,
+  hsl(121, 82%, 69%) 100%
+);
+$gradientGreenHover: linear-gradient(
+  360deg,
+  hsl(117, 57%, 53%) 0%,
+  hsl(121, 82%, 72%) 100%
+);
+$gradientGreenActive: linear-gradient(
+  360deg,
+  hsl(117, 57%, 55%) 0%,
+  hsl(121, 82%, 75%) 100%
+);
