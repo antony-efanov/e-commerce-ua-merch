@@ -23,9 +23,7 @@
 - User can confirm order, then see what he ordered in «orders» tab
 - Products sorted by availability
 
-I'm using [fakestore Api](https://fakestoreapi.com/) to get product lists.
-
-##### Credit:- fakestore Api
+I'm using mockapi.io to fetch data.
 
 ### Key libs used
 
